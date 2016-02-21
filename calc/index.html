@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+
+    <!-- WinJS references -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	
+	<script type="application/javascript">
+	$(function () {
+		$('input').keyup(function() {
+			var total = 0;
+			$('input').each(function() {
+				if($(this).val() != '') {
+					total += parseFloat($(this).val());
+				}
+			});
+			$('#result').text(total);
+		});
+	});
+	</script>
+	
+	<style>
+		#result {
+		color: green;
+		font-weight: bold;
+		font-size: 30px;
+		margin-top: 20px;
+	}
+	</style>
+</head>
+<body>
+    <div class="jumbotron">
+	    <div class="container">
+
+  <h1>Hello, world!</h1>
+  </div>
+</div>
+<div class="container" style="padding-bottom:100px">
+<form>
+
+<label for="cottonPrice">Cotton Price</label>
+<input type="number" class="form-control" id="cottonPrice" placeholder="Cotton Price"></input>
+
+<label for="CHA">CHA</label>
+<input type="number" class="form-control" id="CHA" placeholder="CHA"></input>
+
+<label for="Fumigation">Fumigation</label>
+<input type="number" class="form-control" id="Fumigation" placeholder="Fumigation"></input>
+
+<label for="CFS">CFS</label>
+<input type="number" class="form-control" id="CFS" placeholder="CFS"></input>
+
+<label for="THC">THC</label>
+<input type="number" class="form-control" id="THC" placeholder="THC"></input>
+
+<label for="DOX">DOX</label>
+<input type="number" class="form-control" id="DOX" placeholder="DOX"></input>
+
+<label for="Transportation">Transportation</label>
+<input type="number" class="form-control" id="Transportation" placeholder="Transportation"></input>
+
+<label for="Insurance">Insurance</label>
+<input type="number" class="form-control" id="Insurance" placeholder="Insurance"></input>
+
+<label for="InspectionCharges">Inspection Charges</label>
+<input type="number" class="form-control" id="InspectionCharges" placeholder="Inspection Charges"></input>
+
+<label for="Courier">Courier</label>
+<input type="number" class="form-control" id="Courier" placeholder="Courier"></input>
+
+<label for="Advising">Advising</label>
+<input type="number" class="form-control" id="Advising" placeholder="Advising"></input>
+
+<label for="Misc">Misc</label>
+<input type="number" class="form-control" id="Misc" placeholder="Misc"></input>
+
+<div id="result"></div>
+
+</form>
+</div>
+
+</body>
+</html>
