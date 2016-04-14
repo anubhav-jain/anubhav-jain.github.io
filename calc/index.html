@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+	
+	<script type="application/javascript">
+	$(function () {
+		$('.exp').keyup(function() {
+			var total = 0;
+			$('.exp').each(function() {
+				if($(this).val() != '') {
+					total += parseFloat($(this).val());
+				}
+			});
+			$('#result').text(total);
+		});
+		$('.costing').keyup(function() {
+			var total = parseFloat($('#result').text());
+			
+			var dollar = parseFloat($('#Dollar').val());
+			
+			var discount = parseFloat($('#Discounting').val());
+			
+			var premiasight = parseFloat($('#PremiaSight').val());
+			var premia3m = parseFloat($('#Premia3M').val());
+			var premia6m = parseFloat($('#Premia6M').val());
+			
+			var liborsight = parseFloat($('#LiborSight').val());
+			var libor3m = parseFloat($('#Libor3M').val());
+			var libor6m = parseFloat($('#Libor6M').val());
+			
+			if(dollar != '' && premiasight != '' && total != '') {
+				$('.libor tbody tr:nth-child(1) td').eq(1).text(((total)/((dollar + premiasight) * 356 * 2.20462)) * 100);
+			}
+			
+			if(dollar != '' && premia3m != '' && total != '') {
+				$('.libor tbody tr:nth-child(2) td').eq(1).text(((total)/((dollar + premia3m) * 356 * 2.20462)) * 100);
+			}
+			
+			if(dollar != '' && premia6m != '' && total != '') {
+				$('.libor tbody tr:nth-child(3) td').eq(1).text(((total)/((dollar + premia6m) * 356 * 2.20462)) * 100);
+			}
+			
+			if(dollar != '' && premiasight != '' && total != '') {
+				$('.inr tbody tr:nth-child(1) td').eq(1).text(((total)/((dollar + premiasight) * 356 * 2.20462)) * 100);
+			}
+			
+			if(dollar != '' && premia3m != '' && total != '' && discount != '') {
+				$('.inr tbody tr:nth-child(2) td').eq(1).text((((total)/((dollar + premia3m) * 356 * 2.20462)) * 100) * (1 + ((discount/100) * 0.25)));
+			}
+			
+			if(dollar != '' && premia6m != '' && total != '' && discount != '') {
+				$('.inr tbody tr:nth-child(3) td').eq(1).text((((total)/((dollar + premia6m) * 356 * 2.20462)) * 100) * (1 + ((discount/100) * 0.5)));
+			}
+			
+		});
+	});
+	</script>
+	
+	<style>
+	#result {
+		color: green;
+		font-weight: bold;
+		font-size: 30px;
+		margin-top: 20px;
+	}
+	table {
+		border: solid 1px gray;
+		font-size: 45px;
+	}
+	@media screen and (max-width: 980px) {
+		label {
+			font-size: 60px;
+		}
+		.form-control {
+			font-size: 60px;
+			height: auto;
+		}
+		#result {
+			font-size: 70px;
+		}
+	}
+	</style>
+</head>
+<body>
+    <div class="jumbotron">
+	    <div class="container">
+
+  <h1>Abhishek's Awesome Calulator</h1>
+  </div>
+</div>
+<div class="container" style="padding-bottom:100px">
+<form>
+
+<div class="form-group">
+<label for="cottonPrice">Cotton Price</label>
+<input type="number" class="form-control exp" id="cottonPrice" placeholder="Cotton Price"></input>
+</div>
+
+<div class="form-group">
+<label for="CHA">CHA</label>
+<input type="number" class="form-control exp" id="CHA" placeholder="CHA"></input>
+</div>
+
+<div class="form-group">
+<label for="Fumigation">Fumigation</label>
+<input type="number" class="form-control exp" id="Fumigation" placeholder="Fumigation"></input>
+</div>
+
+<div class="form-group">
+<label for="CFS">CFS</label>
+<input type="number" class="form-control exp" id="CFS" placeholder="CFS"></input>
+</div>
+
+<div class="form-group">
+<label for="THC">THC</label>
+<input type="number" class="form-control exp" id="THC" placeholder="THC"></input>
+</div>
+
+<div class="form-group">
+<label for="DOX">DOX</label>
+<input type="number" class="form-control exp" id="DOX" placeholder="DOX"></input>
+</div>
+
+<div class="form-group">
+<label for="Transportation">Transportation</label>
+<input type="number" class="form-control exp" id="Transportation" placeholder="Transportation"></input>
+</div>
+
+<div class="form-group">
+<label for="Insurance">Insurance</label>
+<input type="number" class="form-control exp" id="Insurance" placeholder="Insurance"></input>
+</div>
+
+<div class="form-group">
+<label for="InspectionCharges">Inspection Charges</label>
+<input type="number" class="form-control exp" id="InspectionCharges" placeholder="Inspection Charges"></input>
+</div>
+
+<div class="form-group">
+<label for="Courier">Courier</label>
+<input type="number" class="form-control exp" id="Courier" placeholder="Courier"></input>
+</div>
+
+<div class="form-group">
+<label for="Advising">Advising</label>
+<input type="number" class="form-control exp" id="Advising" placeholder="Advising"></input>
+</div>
+
+<div class="form-group">
+<label for="Misc">Misc</label>
+<input type="number" class="form-control exp" id="Misc" placeholder="Misc"></input>
+</div>
+
+<div class="form-group">
+<label for="ClaimBuffer">Claim Buffer</label>
+<input type="number" class="form-control exp" id="ClaimBuffer" placeholder="Claim Buffer"></input>
+</div>
+
+<div class="form-group">
+<label for="Profit">Profit</label>
+<input type="number" class="form-control exp" id="Profit" placeholder="Profit"></input>
+</div>
+
+<div class="form-group">
+<label for="Commission">Commission & Other Fees</label>
+<input type="number" class="form-control exp" id="Commission" placeholder="Commission & Other Fees"></input>
+</div>
+
+<div id="result"></div>
+
+<div class="form-group">
+<label for="Dollar">Dollar Rate</label>
+<input type="number" class="form-control costing" id="Dollar" placeholder="Dollar Rate"></input>
+</div>
+
+<div class="form-group">
+<label for="PremiaSight">Premia - Sight</label>
+<input type="number" class="form-control costing" id="PremiaSight" placeholder="Premia - Sight"></input>
+</div>
+
+<div class="form-group">
+<label for="Premia3M">Premia - 3M</label>
+<input type="number" class="form-control costing" id="Premia3M" placeholder="Premia - 3M"></input>
+</div>
+
+<div class="form-group">
+<label for="Premia6M">Premia6M</label>
+<input type="number" class="form-control costing" id="Premia6M" placeholder="Premia - 6M"></input>
+</div>
+
+<div class="form-group">
+<label for="Discouting">Discounting Charges - INR</label>
+<input type="number" class="form-control costing" id="Discounting" placeholder="Discounting Charges - INR"></input>
+</div>
+
+<div class="form-group">
+<label for="LiborSight">Libor - Sight</label>
+<input type="number" class="form-control costing" id="LiborSight" placeholder="Libor - Sight"></input>
+</div>
+
+<div class="form-group">
+<label for="Libor3M">Libor - 3M</label>
+<input type="number" class="form-control costing" id="Libor3M" placeholder="Libor - 3M"></input>
+</div>
+
+<div class="form-group">
+<label for="Libor6M">Libor6M</label>
+<input type="number" class="form-control costing" id="Libor6M" placeholder="Libor - 6M"></input>
+</div>
+
+<table class="table libor">
+<thead>
+<tr>
+<td>Type</td>
+<td>Libor</td>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sight</td>
+<td></td>
+
+</tr>
+<tr>
+<td>3M</td>
+<td></td>
+
+</tr>
+<tr>
+<td>6M</td>
+<td></td>
+
+</tr>
+</tbody>
+</table>
+
+<table class="table inr">
+<thead>
+<tr>
+<td>Type</td>
+
+<td>INR</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sight</td>
+
+<td></td>
+</tr>
+<tr>
+<td>3M</td>
+
+<td></td>
+</tr>
+<tr>
+<td>6M</td>
+
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</form>
+</div>
+
+</body>
+</html>
